@@ -7,25 +7,20 @@ import Form from 'react-bootstrap/Form';
 export default function Register(){
 
     //create initial state
-    const [fname, setFname] = useState("John ..."); 
-    const [lname, setLname] = useState("...Doe"); 
-    const [email, setEmail] = useState("someone@mai.com"); 
-    const [password, setPassword] = useState("*****"); 
-    const [newsletter, setNewsletter] = useState(true); 
+    const [formData, setFormData] = useState({
+        fname:"John ...",
+        lname:"...Doe",
+        email:"someone@mai.com",
+        password:"****",
+        newsletter:true
+    })
 
 
     function handleSubmit(event){
         event.preventDefault(); 
-        const regDetails ={
-            firstname:fname, 
-            lastname:lname, 
-            pwd: password, 
-            userEmail:email,
-            newsletter:newsletter
-
-        }
-        console.log(regDetails)
-        alert(`welcome to the community ${fname} ${lname}`)
+        
+        console.log(formData)
+        alert(`welcome to the community ${formData.fname} ${formData.lname}`)
     }
 
     return(
@@ -37,24 +32,24 @@ export default function Register(){
                     <Form.Group className="mb-3" controlId="fname">
                         <Form.Label>First Name</Form.Label>
                         <Form.Control type="text" 
-                                      placeholder={fname} 
-                                      onChange={e => setFname(e.target.value)}/>
+                                      placeholder={formData.fname} 
+                                      onChange={e => setFormData({...formData, fname:e.target.value})}/>
                         </Form.Group>
 
                     {/* last name */}
                         <Form.Group className="mb-3" controlId="lname">
                         <Form.Label>Last Name</Form.Label>
                         <Form.Control type="text" 
-                                       placeholder={lname} 
-                                       onChange={e => setLname(e.target.value)}/>
+                                       placeholder={formData.lname} 
+                                       onChange={e => setFormData({...formData, lname:e.target.value})}/>
                         </Form.Group>
 
                     {/* email */}
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" 
-                                    placeholder={email} 
-                                    onChange={e => setEmail(e.target.value)}/>
+                                    placeholder={formData.email} 
+                                    onChange={e => setFormData({...formData, email:e.target.value})}/>
                         <Form.Text className="text-muted">
                             We'll never share your email with anyone else.
                         </Form.Text>
@@ -64,8 +59,8 @@ export default function Register(){
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password"  
-                                      placeholder={password} 
-                                      onChange={e => setPassword(e.target.value)} />
+                                      placeholder={formData.password} 
+                                      onChange={e => setFormData({...formData, password:e.target.value})} />
                         </Form.Group>
 
                         {/* check */}
@@ -75,8 +70,8 @@ export default function Register(){
                                 <input
                                 type="checkbox"
                                 id="newsletter"
-                                checked={newsletter}
-                                onChange={(e) => setNewsletter(e.target.checked)}
+                                checked={formData.newsletter}
+                                onChange={(e) => setFormData({...formData, newsletter:e.target.checked})}
                                 />
                             </label>
                         </Form.Group >
