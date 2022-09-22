@@ -19,8 +19,10 @@ export default function Register(){
     // generic handle change function
     function handleChange(event){
         const key = event.target.id
+        //handling checkbox instances 
+        const value = event.target.type ==="checkbox" ? event.target.checked : event.target.id
        setFormData({...formData, 
-                    [key]:event.target.value}
+                    [key]:value}
                     )
     }
 
@@ -84,7 +86,7 @@ export default function Register(){
                                 type="checkbox"
                                 id="newsletter"
                                 checked={formData.newsletter}
-                                onChange={(e) => setFormData({...formData, newsletter:e.target.checked})}
+                                onChange={handleChange}
                                 />
                             </label>
                         </Form.Group >
