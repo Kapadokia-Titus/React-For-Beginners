@@ -16,6 +16,15 @@ export default function Register(){
     })
 
 
+    // generic handle change function
+    function handleChange(event){
+        const key = event.target.id
+       setFormData({...formData, 
+                    [key]:event.target.value}
+                    )
+    }
+
+
     function handleSubmit(event){
         event.preventDefault(); 
         
@@ -32,24 +41,27 @@ export default function Register(){
                     <Form.Group className="mb-3" controlId="fname">
                         <Form.Label>First Name</Form.Label>
                         <Form.Control type="text" 
+                                      id="fname"
                                       placeholder={formData.fname} 
-                                      onChange={e => setFormData({...formData, fname:e.target.value})}/>
+                                      onChange={handleChange}/>
                         </Form.Group>
 
                     {/* last name */}
                         <Form.Group className="mb-3" controlId="lname">
                         <Form.Label>Last Name</Form.Label>
                         <Form.Control type="text" 
+                                      id="lname"
                                        placeholder={formData.lname} 
-                                       onChange={e => setFormData({...formData, lname:e.target.value})}/>
+                                       onChange={handleChange}/>
                         </Form.Group>
 
                     {/* email */}
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" 
+                                      id="email"
                                     placeholder={formData.email} 
-                                    onChange={e => setFormData({...formData, email:e.target.value})}/>
+                                    onChange={handleChange}/>
                         <Form.Text className="text-muted">
                             We'll never share your email with anyone else.
                         </Form.Text>
@@ -59,8 +71,9 @@ export default function Register(){
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password"  
+                                      id="password"
                                       placeholder={formData.password} 
-                                      onChange={e => setFormData({...formData, password:e.target.value})} />
+                                      onChange={handleChange} />
                         </Form.Group>
 
                         {/* check */}
